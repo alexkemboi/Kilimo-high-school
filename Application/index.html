@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KILIMO HIGH SCHOOL</title>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-DGln9iSTN81E/gOFT90zL2Qd3PqA3JFpH1eNScYkDNTnKkkBzlCFI+Hf8AYPQJd04CwAJKQrLrA+SGlJMx/O1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">                           
+  <title>Afrecommerce</title>
+</head>
+<body>
+    <!--Navbar-->
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Kilimo High School</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                       <select class="form-control bg-dark text-light mr-15" name="classes" id="classes">
+                            <option value="ViewClasses">
+                                   View Classes
+                            </option>
+                            <option value="ViewClasses" >
+                                  Add Class
+                           </option>
+                        </select>
+                    </li>
+                    <li class="nav-item dropdown">
+                       <select class="form-control bg-dark text-light" name="classes" id="classes">
+                            <option value="ViewClasses">
+                                <button  onchange="showStream()">Streams</button> 
+                            </option>
+                            <option value="ViewClasses" onchange="showStreamTable()">
+                                Add Stream
+                            </option>
+                        </select>
+                    </li>
+                    <li class="nav-item dropdown">
+                       <select class="form-control bg-dark text-light" name="classes" id="classes">
+                            <option value="ViewClasses">
+                                <a class="form-control bg-dark text-light" href="#">View Students</a>
+                            </option>
+                            <option value="ViewClasses">
+                                <a class="form-control bg-dark text-light" href="#">Add Student</a>
+                            </option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+
+
+        <!--Form to add a class-->
+        <div class="container" >
+            <div class="card "  id="addClassForm">
+                <div class="card-header">
+                    <h5 class="card-title">Class Registration</h5>
+                    <h6 id="insertMessage"></h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="numberOfStudent">Number of student:</label>
+                            <input type="text" class="form-control" id="numberOfStudentInput" placeholder="Enter number of student">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="class">Class:</label>
+                            <select class="form-control" id="classSelect">
+                              <option>Form 1</option>
+                              <option>Form 2</option>
+                              <option>Form 3</option>
+                              <option>Form 4</option>
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="subject">Number Subject:</label>
+                              <input type="text" class="form-control" id="subjectInput" placeholder="Enter subject">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="teacher-name">Teacher Name:</label>
+                              <input type="text" class="form-control" id="teacherNameInput" placeholder="Enter teacher name">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                            <button onclick="getClassValues()" class="btn btn-warning" id="addClassButton">Add class</button>
+                    </div>               
+            </div>
+          </div>
+          
+
+
+        <!--Form to add a student-->
+
+        <div class="container" style="display: block;">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Class Stream Registration</h5>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="streamInput"><i class="fas fa-stream"></i> Stream Name:</label>
+                      <input type="text" class="form-control" id="streamInput" placeholder="Enter stream name">
+                    </div>
+                    <div class="form-group">
+                      <label for="classInput"><i class="fas fa-chalkboard"></i> Class Name:</label>
+                      <input type="text" class="form-control" id="classInput" placeholder="Enter class name">
+                    </div>
+                    <div class="form-group">
+                      <label for="yearInput"><i class="fas fa-calendar"></i> Academic Year:</label>
+                      <input type="text" class="form-control" id="yearInput" placeholder="Enter academic year">
+                    </div>
+                    <div class="form-group">
+                      <label for="teacherInput"><i class="fas fa-chalkboard-teacher"></i> Teacher:</label>
+                      <input type="text" class="form-control" id="teacherInput" placeholder="Enter teacher name">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                    <button onclick="getStreamValues()" class="btn btn-warning"><i class="fas fa-save"></i> Register Stream</button>
+                </div>
+              </div>              
+        </div>
+
+        <!--Table to view students-->
+        <div class="container" style="display: block;">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Student Registration</h5>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                        <label for="admissionInput"><i class="fas fa-user"></i>Admission</label>
+                        <input type="text" class="form-control" id="admissionInput" placeholder="Enter name">
+                      </div>
+                    <div class="form-group">
+                      <label for="nameInput"><i class="fas fa-user"></i> Name:</label>
+                      <input type="text" class="form-control" id="nameInput" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                      <label for="emailInput"><i class="fas fa-envelope"></i> Email:</label>
+                      <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="dobInput"><i class="fas fa-calendar"></i> Date of Birth:</label>
+                      <input type="date" class="form-control" id="dobInput">
+                    </div>
+                    <div class="form-group">
+                      <label for="phoneInput"><i class="fas fa-phone"></i> Phone Number:</label>
+                      <input type="tel" class="form-control" id="phoneInput" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="ClassInput"><i class="fas fa-user"></i> Class</label>
+                        <input type="text" class="form-control" id="ClassInput" placeholder="Enter name">
+                      </div>
+                      <div class="form-group">
+                        <label for="streamInput"><i class="fas fa-user"></i> Stream</label>
+                        <input type="text" class="form-control" id="streamInput" placeholder="Enter name">
+                      </div>
+                    
+                  </form>
+                </div>
+                <div class="card-footer">
+                    <button onclick="getStudentValues()" class="btn btn-warning"><i class="fas fa-save"></i> Register Student</button>
+                </div>
+              </div>
+              
+        </div>
+
+
+
+        <!--Table to display student details-->
+        <div class="container">
+            <div class="card" style="display: block;" id="studentsTable">
+                <div class="card-body">
+                  <h5 class="card-title">List of Students</h5>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Admission Number</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Phone Number</th>
+                        <th>Class</th>
+                        <th>Stream</th>
+                      </tr>
+                    </thead>
+                    <tbody id="studentDetails">
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+
+        <!--Tables to display class-->
+        <div class="container" >
+
+            <div class="card" style="display: block;" id="streamTable">
+                <div class="card-header">
+                  <h5 class="card-title">Registered Stream</h5>
+                </div>
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Stream Name</th>
+                        <th>Class Name</th>
+                        <th>Academic Year</th>
+                        <th>Teacher</th>
+                      </tr>
+                    </thead>
+                    <tbody id="streamDetails">
+                    </tbody>
+                  </table>
+                </div>
+              </div>   
+            
+
+        </div>
+          
+
+        <!--Table to display the list of classes-->
+        <div class="container" >
+
+          <div class="card" style="display: block;" id="classTable">
+              <div class="card-header">
+                <h5 class="card-title">Registered Classes</h5>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ClassName</th>
+                      <th>ClassTeacher</th>
+                      <th>Students Number</th>
+                      <th>Subjects Number</th>
+                    </tr>
+                  </thead>
+                  <tbody id="classDetails">
+                  </tbody>
+                </table>
+              </div>
+            </div>   
+          
+
+      </div>
+    
+
+
+
+
+    <script src="/Application/app.js"></script>
+</body>
+</html>
